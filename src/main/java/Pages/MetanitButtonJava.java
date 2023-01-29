@@ -15,42 +15,49 @@ public class MetanitButtonJava extends Base {
 
     private final By ButtonJava = By.xpath("//ul[@class='mainmenu']//a[text()='Java']");
     private final By ButtonJavaSE = By.xpath("//div[@class='navmenu']//a[text()='Java SE']");
-    private final By NameTema1 = By.xpath("//span[text()='Глава 1. Введение в Java']");
-    private final By ListTem = By.xpath("//span[@class='folder']");
+    private final By NameFirstSection = By.xpath("//span[text()='Глава 1. Введение в Java']");
+    private final By ListTem = By.xpath("//li[@class='closed']");
 
-
-    public MetanitButtonJava ProverkaJavaSE(){
-        urlMain();
+    public MetanitButtonJava clickButtonJava(){
         driver.findElement(ButtonJava).click();
-        driver.findElement(ButtonJavaSE).click();
         return this;
     }
 
-    public MetanitButtonJava clickTemy(int a){
-        urlMain();
-        driver.findElement(ButtonJava).click();
+    public MetanitButtonJava clickButtonJavaSE(){
         driver.findElement(ButtonJavaSE).click();
-        List<WebElement> list =driver.findElements(ListTem);
-        list.get(a).click();
         return this;
     }
-    public int SchetTem(){
-        urlMain();
-        driver.findElement(ButtonJava).click();
-        driver.findElement(ButtonJavaSE).click();
+    public MetanitButtonJava clickButtonFirstSection(){
+        driver.findElement(NameFirstSection).click();
+        return this;
+    }
+
+    public String getNameFirstSection(){
+        return driver.findElement(NameFirstSection).getText();
+    }
+    public MetanitButtonJava listSections(){
+        driver.findElement(ListTem);
+        return this;
+    }
+
+    public int sizeListSections(){
         List<WebElement> list =driver.findElements(ListTem);
         return list.size();
     }
 
-    public String SerchNameButton1(){
-        urlMain();
+    public MetanitButtonJava checkJavaSE(){
         driver.findElement(ButtonJava).click();
         driver.findElement(ButtonJavaSE).click();
-        return driver.findElement(NameTema1).getText();
+        return this;
     }
 
-    public String Title(){
-        urlMain();
+    public MetanitButtonJava openSection(int numberSections){
+        List<WebElement> list =driver.findElements(ListTem);
+        list.get(numberSections).click();
+        return this;
+    }
+
+    public String getTitle(){
         return driver.getTitle();
     }
 
