@@ -9,7 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
-public class KlonBase {
+public class BaseKlone {
     protected WebDriver driver = BazovieNastroiki.createDriver();
     protected Base baseT = new Base(driver);
     protected MetanitButtonJava MetanitMain = new MetanitButtonJava(driver);
@@ -29,7 +29,5 @@ public class KlonBase {
     public void close(){
         driver.quit();
     }
-
-
 
 }
